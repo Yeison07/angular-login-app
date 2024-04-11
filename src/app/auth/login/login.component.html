@@ -1,0 +1,19 @@
+<form [formGroup]="loginForm">
+  <h1>Login</h1>
+  <input formControlName="email" name="" id="" />
+  @if (email.invalid && (email.dirty || email.touched)) {
+    <p class="text_error">Ingresa un correo electronico valido</p>
+  }
+  <input formControlName="password" name="" id="" />
+  @if (password.invalid && (password.dirty || password.touched)) {
+    <p class="text_error">Ingresa tu contraseña</p>
+  }
+  <a href="http://">¿Olvidaste tu contraseña?</a>
+  <input
+    (click)="login()"
+    class="button"
+    type="button"
+    value="Iniciar sesion"
+  />
+  <a href="http://">¿No tienes cuenta? registrate aqui</a>
+</form>

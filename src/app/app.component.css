@@ -1,0 +1,15 @@
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/500.css";
+
+
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-white);
+    font-family: "Roboto",sans-serif;
+    
+}
+
