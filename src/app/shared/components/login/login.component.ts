@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/auth/login.service';
-import { LoginRequest } from '../../services/auth/loginRequest';
+import { LoginService } from '../../../core/services/auth/login.service';
+import { LoginRequest } from '../../models/loginRequest';
+
 
 @Component({
   selector: 'app-login',
@@ -21,14 +22,27 @@ export class LoginComponent {
 
   login() {
     if (this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value as LoginRequest)
-      this.router.navigateByUrl("/welcome")
-      this.loginForm.reset()
+      this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
+        next: (userData) => {
+          localStorage.setItem("token", userData.auth)
+          console.log(userData);
+        }, error: (err) => {
+          console.log(err);
+        },
+        complete: () => {
+          this.router.navigateByUrl("/welcome")
+          this.loginForm.reset()
+        }
+
+      })
     }
     else {
       this.loginForm.markAllAsTouched()
     }
   }
+
+
+
 
   get email() {
     return this.loginForm.controls.email
