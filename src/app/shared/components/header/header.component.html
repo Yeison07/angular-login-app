@@ -1,0 +1,6 @@
+<header>
+  <a href="welcome">Inicio</a>
+  @if (authservice.currentUserSignal()) {
+    <button (click)="closeSesion()">Cerrar sesion</button>
+  }
+</header>

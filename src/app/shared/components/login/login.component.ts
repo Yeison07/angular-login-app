@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../../core/services/auth/login.service';
-import { LoginRequest } from '../../models/loginRequest';
+import { AuthService } from '../../../core/services/auth/auth.service';
+import { UserDataRequest } from '../../models/userRequest';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { LoginRequest } from '../../models/loginRequest';
   imports: [ReactiveFormsModule]
 })
 export class LoginComponent {
-  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
 
   loginForm = this.formBuilder.group({
     email: ["", [Validators.required, Validators.email]],
@@ -22,10 +22,10 @@ export class LoginComponent {
 
   login() {
     if (this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
+      this.authService.login(this.loginForm.value as UserDataRequest).subscribe({
         next: (userData) => {
-          localStorage.setItem("token", userData.auth)
-          console.log(userData);
+          localStorage.setItem("token", userData.user.token)
+          this.authService.currentUserSignal.set(userData.user)
         }, error: (err) => {
           console.log(err);
         },

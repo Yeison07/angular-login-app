@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-:root{
-    --bg-white:#F4F3F4;
-    --primay:#567CC7;
-    
+:root {
+  --bg-white: #f4f3f4;
+  --primay: #567cc7;
+  font-family: 'Roboto', sans-serif;
 }

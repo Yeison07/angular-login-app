@@ -1,0 +1,36 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  font-size: 15px;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 1em;
+  background-color: #fff;
+  color: #2f2448;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #af8bbd75;
+  translate: 0 -1px;
+}
+
+a {
+  text-decoration: none;
+  color: #2f2448;
+  border: 1px solid #2f2448;
+  padding: 0.5em 1em;
+  font-weight: 500;
+  transition: background-color 250ms ease-in-out;
+}
+
+a:hover {
+  background-color: #af8bbd75;
+  border-color: #af8bbd75;
+}

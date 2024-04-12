@@ -1,6 +1,13 @@
-<form [formGroup]="loginForm">
-  <img src="../../../../assets/undraw_camping_noc8.svg" alt="Imagen fogata" />
-  <h1>Inciar sesion</h1>
+<form [formGroup]="registerForm">
+  <img
+    src="../../../../assets/undraw_relaunch_day_902d.svg"
+    alt="Imagen noche"
+  />
+  <h1>Registro de usuario</h1>
+  <input placeholder="Ingresa tu nombre" formControlName="name" name="" id="" />
+  @if (name.invalid && (name.dirty || name.touched)) {
+    <p class="text_error">Ingresa tu nombre</p>
+  }
   <input placeholder="Ingresa tu email" formControlName="email" name="" id="" />
   @if (email.invalid && (email.dirty || email.touched)) {
     <p class="text_error">Ingresa un correo electronico valido</p>
@@ -15,12 +22,5 @@
   @if (password.invalid && (password.dirty || password.touched)) {
     <p class="text_error">Ingresa tu contraseña</p>
   }
-  <a href="http://">¿Olvidaste tu contraseña?</a>
-  <input
-    (click)="login()"
-    class="button"
-    type="button"
-    value="Iniciar sesion"
-  />
-  <a href="register">¿No tienes cuenta? registrate aqui</a>
+  <input (click)="register()" class="button" type="button" value="Registrate" />
 </form>
